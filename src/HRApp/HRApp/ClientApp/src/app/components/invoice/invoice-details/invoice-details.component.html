@@ -1,0 +1,106 @@
+<div class="dv-ttl"><h2>Create Invoice / Invoice Details</h2></div>
+<div class="dv-maincontent-wrap dv-card">
+  <div class="dv-filter mb-2 pb-2 px-3">
+    <button type="button" class="btn btn-primary">SAVE INVOICE</button> &nbsp;
+    <button type="button" class="btn btn-outline-primary">PRINT AND SEND TO EMAIL</button>
+  </div>
+  <div *ngIf="busy" class="col-md-12 text-center">
+    <h1 class="text-info">Loading... &nbsp;<i class="fas fa-circle-notch fa-spin text-info"></i></h1>
+  </div>
+  <div class="col-md-12 px-0">
+    <section class="header-info">
+      <div class="d-flex">
+        <div class="col-md-6">
+          <div class="img-placeholder" style="width: 50%;">
+            <label for="additemfile">
+              <img class="img px-2" src="https://scalesquad.com/wp-content/uploads/2016/05/logo-blue-small.png" style="width: 100%;" for="avatar" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Business Name</label><br />
+            <strong>{{ businessInfo.BusinessName }}</strong>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <br />
+            <strong>{{ businessInfo.Address }}, {{ businessInfo.City }}, {{ businessInfo.PostalCode }}</strong>
+          </div>
+          <div class="form-group">
+            <label>Bill to : </label>
+            <input type="text" class="form-control" placeholder="Search Customer">
+          </div>
+          <div class="form-group">
+            <label>Customer Address</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>INVOICE</h5>
+          <div class="form-group" style="padding-top: 23px;">
+            <label>Invoice #</label>
+            <input type="text" class="form-control" placeholder="000-000-0000" [disabled]="true">
+          </div>
+          <div class="form-group">
+            <label>Invoice Date</label>
+            <input type="date" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="col-md-6">
+ 
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </section>
+    <div class="invoice-main pt-4 shadow">
+      <section class="items-list px-3">
+        <table class="table table-sm table-striped">
+          <thead class="bg-info text-white">
+            <tr>
+              <th style="width:5%">&nbsp;</th>
+              <th style="width:65%">DESCRIPTION</th>
+              <th style="width:10%">QTY</th>
+              <th style="width:10%">RATE</th>
+              <th style="width:10%">AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of InvoiceItems">
+              <td class="text-right d-flex px-2">
+                <button type="button" class="btn btn-danger btn-sm" (click)="deleteItem(item)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+              <td><input type="text" class="form-control" [(ngModel)]="item.ItemName" /></td>
+              <td><input type="number" class="form-control" (ngModelChange)="changeQty($event, item)" [(ngModel)]="item.Qty" /></td>
+              <td><input type="number" class="form-control" [(ngModel)]="item.Rate" /></td>
+              <td><input type="number" class="form-control" [(ngModel)]="item.Amount" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="actions-totals pt-1 pb-3">
+        <div class="d-flex">
+          <div class="col-md-8">
+            <div class="d-flex justify-align-start">
+              <button type="button" (click)="addNewItem()" class="btn btn-primary btn-sm">Add Item +</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="float-right"><strong>Sub Total</strong></label>
+              <input type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="float-right"><strong>Grand Total</strong></label>
+              <input type="number" class="form-control" />
+            </div>
+        </div>
+      </div>
+      </section>
+    </div>
+  </div>
+</div>
+

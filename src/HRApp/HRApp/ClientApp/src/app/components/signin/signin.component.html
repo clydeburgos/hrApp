@@ -1,0 +1,27 @@
+<div class="signin-container shadow">
+  <div class="dv-ttl">
+    <h2 class="text-dark">SIGN IN PORTAL &nbsp;
+    <i class="fas fa-sign-in-alt text-primary"></i>
+  </h2></div>
+<div class="dv-maincontent-wrap dv-card">
+  <div *ngIf="busy" class="col-md-12 text-center">
+    <h1 class="text-info">Loading... &nbsp;<i class="fas fa-circle-notch fa-spin text-info"></i></h1>
+  </div>
+  <form #loginForm="ngForm" (ngSubmit)="signIn()">
+  <div class="col-md-12 px-0">
+    <div class="form-group">
+      <label>USERNAME</label><br />
+      <input type="text" class="form-control" [(ngModel)]="model.Username"  name="Username" #Username="ngModel" />
+    </div>
+    <div class="form-group">
+      <label>PASSWORD</label><br />
+      <input type="password" class="form-control" [(ngModel)]="model.Password"  name="Password" #Password="ngModel" />
+    </div>
+  </div>
+  <div class="dv-filter mb-2 pb-2">
+    <button type="submit" class="btn btn-primary">SIGN IN</button> &nbsp;
+    <button type="button" (click)="navigateToCreate()" class="btn btn-outline-primary">CREATE ACCOUNT</button>
+  </div>
+  </form>
+</div>
+</div>
