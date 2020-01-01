@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
     this.busy = true;
     this.authService.login(this.model.Username, this.model.Password).subscribe((response) => {
 				this.authService.setUserToken(response.token);
-				this.router.navigate(['/home']);
+				this.router.navigate(['/user/me']);
 				this.busy = false;
 			}, error => {
 				this.busy = false;

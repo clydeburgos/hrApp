@@ -10,7 +10,7 @@ export class PageService {
 	public data: any = {};
 
 	constructor(private titleService: Title) {
-		this.data.hideHeader = true;
+		this.data.hideHeader = false;
 	}
 
 	public getBaseTitle() {

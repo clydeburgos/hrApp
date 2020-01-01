@@ -73,7 +73,7 @@ namespace HRApp.Services
             }
             return null;
         }
-        public async Task<UserViewModel> UpdateUserAsync(UserModel model) {
+        public async Task<UserViewModel> UpdateUserAsync(UserViewModel model) {
             var user = await GetUser(model.Id);
             if (user != null)
             {
@@ -83,6 +83,15 @@ namespace HRApp.Services
                 user.IsActive = true;
                 user.Username = model.Username;
                 user.FirstName = model.FirstName;
+
+                var userDetails = await db.UserDetails.SingleOrDefaultAsync(ud => ud.UserId == model.Id);
+                if (userDetails != null) {
+                    userDetails.FullAddress = model.UserDetails.FullAddress;
+                    userDetails.BankName = model.UserDetails.BankName;
+                    userDetails.BankFullAddress = model.UserDetails.BankFullAddress;
+                    userDetails.AccountNumber = model.UserDetails.AccountNumber;
+                    userDetails.NetSalary = model.UserDetails.NetSalary;
+                }
 
                 await db.SaveChangesAsync();
                 return user;

@@ -14,11 +14,12 @@ namespace HRApp.Models
         }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<CompanyModel> Companies { get; set; }
+        public DbSet<UserDetailModel> UserDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer(@"Data Source=.;Initial Catalog=HRAppDB;User ID=sa;Password=sa123;");
+               .UseSqlServer(@"Data Source=.;Initial Catalog=HRAppDB;User ID=sa;Password=sa123;");
         }
     }
 }

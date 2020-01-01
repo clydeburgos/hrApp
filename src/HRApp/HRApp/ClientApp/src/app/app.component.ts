@@ -11,7 +11,8 @@ import { PageService } from './services/page.service';
 export class AppComponent {
   title = 'app';
   constructor(public pageService: PageService, public authService: AuthService, private router: Router) {
-		// Temporarily use pageService.data for state
+		console.log(this.pageService.data.hideHeader)
+		console.log(this.authService.user)
 	}
 
 	logout() {

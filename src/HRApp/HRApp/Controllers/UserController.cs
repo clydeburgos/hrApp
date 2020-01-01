@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HRApp.Extensions;
 using HRApp.Models;
+using HRApp.Models.ViewModels;
 using HRApp.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -44,7 +45,7 @@ namespace HRApp.Controllers
         [Route("api/users/{userId}")]
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Update([FromBody]UserModel request)
+        public async Task<IActionResult> Update([FromBody]UserViewModel request)
         {
             if (!ModelState.IsValid)
             {

@@ -12,10 +12,10 @@ export class Company {
 
 export class User {
     public Id: number = 1;
-    public Username: string = 'clydeburgos'; 
-    public Email: string = 'clyde@scalesquad.com';
-    public FirstName: string = 'Vincent Clyde';
-    public LastName: string = 'Burgos';
+    public Username: string = ''; 
+    public Email: string = '';
+    public FirstName: string = '';
+    public LastName: string = '';
     public IsActive: boolean = true;
     public Role: number = 0;
     public Company: Company = new Company();
@@ -23,8 +23,9 @@ export class User {
 }
 
 export class UserDetails {
-    public FullAddress: string = '462 – A Durian Street, Juliville Subd., Tigatto, Davao City, Philippines';
-    public BankName: string = 'BDO';
-    public AccountNumber: string = '003250343050';
-    public BankFullAddress: string = 'Bangoy, Davao City, 8000, Philippines';
+    public FullAddress: string = '';
+    public BankName: string = '';
+    public AccountNumber: string = '';
+    public BankFullAddress: string = '';
+    public NetSalary: string = '';
 }

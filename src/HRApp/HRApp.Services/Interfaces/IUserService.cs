@@ -12,7 +12,7 @@ namespace HRApp.Services.Interfaces
         Task<UserViewModel> GetUser(int userId);
         Task<UserViewModel> SignIn(string username, string password);
         Task<UserViewModel> CreateUserAsync(UserModel model);
-        Task<UserViewModel> UpdateUserAsync(UserModel model);
+        Task<UserViewModel> UpdateUserAsync(UserViewModel model);
         string GenerateJwtForUser(UserViewModel user);
     }
 }

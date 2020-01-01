@@ -14,6 +14,7 @@ import { InvoiceDetailsComponent } from './components/invoice/invoice-details/in
 import { UsersDetailsComponent } from './components/users/users-details/users-details.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -44,8 +45,8 @@ export function tokenGetter() {
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'signin', component: SigninComponent },
       { path: 'signup', component: CreateUserComponent },
-      { path: 'user/me', component: UsersDetailsComponent },
-      { path: 'invoice', component: InvoiceDetailsComponent },
+      { path: 'user/me', component: UsersDetailsComponent, canActivate : [AuthGuardService] },
+      { path: 'invoice', component: InvoiceDetailsComponent, canActivate : [AuthGuardService] },
     ])
   ],
   providers: [],
